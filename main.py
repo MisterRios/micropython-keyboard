@@ -8,30 +8,38 @@ import matrix
 # -
 # DEBOUNCE_MAX = 20
 
-column1 = pyb.Pin('X9', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column2 = pyb.Pin('X10', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column3 = pyb.Pin('X11', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column4 = pyb.Pin('X12', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column7 = pyb.Pin('X8', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column6 = pyb.Pin('X7', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column5 = pyb.Pin('X6', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column8 = pyb.Pin('X5', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column9 = pyb.Pin('X4', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column10 = pyb.Pin('X3', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column11 = pyb.Pin('X2', pyb.Pin.IN, pyb.Pin.PULL_UP)
-column12 = pyb.Pin('X1', pyb.Pin.IN, pyb.Pin.PULL_UP)
+column1 = pyb.Pin('X9', pyb.Pin.OUT_PP)
+column1.low()
+column2 = pyb.Pin('X10', pyb.Pin.OUT_PP)
+column2.low()
+column3 = pyb.Pin('X11', pyb.Pin.OUT_PP)
+column3.low()
+column4 = pyb.Pin('X12', pyb.Pin.OUT_PP)
+column4.low()
+column7 = pyb.Pin('X8', pyb.Pin.OUT_PP)
+column7.low()
+column6 = pyb.Pin('X7', pyb.Pin.OUT_PP)
+column6.low()
+column5 = pyb.Pin('X6', pyb.Pin.OUT_PP)
+column5.low()
+column8 = pyb.Pin('X5', pyb.Pin.OUT_PP)
+column8.low()
+column9 = pyb.Pin('X4', pyb.Pin.OUT_PP)
+column9.low()
+column10 = pyb.Pin('X3', pyb.Pin.OUT_PP)
+column10.low()
+column11 = pyb.Pin('X2', pyb.Pin.OUT_PP)
+column11.low()
+column12 = pyb.Pin('X1', pyb.Pin.OUT_PP)
+column12.low()
 
 columns = [column1, column2, column3, column4, column5, column6, column7, column8, column9, column10, column11,
            column12]
 
-row1 = pyb.Pin('X19', pyb.Pin.OUT_PP)
-row1.low()
-row2 = pyb.Pin('X20', pyb.Pin.OUT_PP)
-row2.low()
-row3 = pyb.Pin('X21', pyb.Pin.OUT_PP)
-row3.low()
-row4 = pyb.Pin('X22', pyb.Pin.OUT_PP)
-row4.low()
+row1 = pyb.Pin('X19', pyb.Pin.IN, pyb.Pin.PULL_UP)
+row2 = pyb.Pin('X20', pyb.Pin.IN, pyb.Pin.PULL_UP)
+row3 = pyb.Pin('X21', pyb.Pin.IN, pyb.Pin.PULL_UP)
+row4 = pyb.Pin('X22', pyb.Pin.IN, pyb.Pin.PULL_UP)
 
 rows = [row1, row2, row3, row4]
 
@@ -53,7 +61,6 @@ COLUMN_RANGE = range(12)
 
 control_keys = ['Shift', 'Command', 'Alt', 'Ctrl', 'Fn1', 'Fn2']
 
-
 while True:
     something_pressed = False
     ctrl_pressed = False
@@ -64,11 +71,11 @@ while True:
     fn2_pressed = False
     for y in ROW_RANGE:
         row = rows[y]
-        row.low()
         for x in COLUMN_RANGE:
             column = columns[x]
+            column.low()
             key_string = matrix.matrix[x][y]
-            if not column.value():
+            if not row.value():
                 if key_string not in control_keys:
                     something_pressed = True
                     pressed_x = x
@@ -86,7 +93,7 @@ while True:
                         fn1_pressed = True
                     if key_string is 'Fn2':
                         fn2_pressed = True
-        row.high()
+            column.high()
     # All keys evaluated
     control_modifier = 0
     if ctrl_pressed:
