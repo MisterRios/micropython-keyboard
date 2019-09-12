@@ -1,17 +1,17 @@
 # coding=utf-8
 matrix = [
-    ['phantom', 'Esc', 'Tab', 'Shift'], # only ESC works
+    ['phantom', 'Esc', 'Tab', 'Shift'],
     ['1', 'q', 'a', 'z'],
-    ['2', 'w', 'r', 'x'],
-    ['3', 'f', 's', 'c'],
-    ['4', 'p', 't', 'v'],
-    ['5', 'g', 'd', 'b'],
-    ['6', 'j', 'h', 'k'],
-    ['7', 'l', 'n', 'm'],
-    ['8', 'u', 'e', ','],
+    ['2', 'w', 'r', 'x', 'Ctrl'],
+    ['3', 'f', 's', 'c', 'phantom'],
+    ['4', 'p', 't', 'v', 'Fn2'],
+    ['5', 'g', 'd', 'b', 'Enter'],
+    ['6', 'j', 'h', 'k', 'Space'],
+    ['7', 'l', 'n', 'm', 'Fn1'],
+    ['8', 'u', 'e', ',', 'Alt'],
     ['9', 'z', 'i', '.'],
     ['0', '|', 'o', '/'],
-    ['phantom', 'Ctrl', 'Fn2', 'Space']
+    ['phantom', 'Ctrl', 'Fn2', 'Space'],
     # ['phantom', '+', '#', 'Shift'],
     # ['Esc', 'Tab', 'Space', 'Alt'],
     # ['1', 'q', 'a', 'Shift'],
@@ -39,7 +39,7 @@ fn2_layer = [
     ['F7', '}', '"', '>'],
     ['F8', '+', '\\', '~'],
     ['F9', 'F11', '-', 'Fn1'],
-    ['F10', 'F12', 'Del', 'Enter']
+    ['F10', 'F12', 'Del', 'Enter'],
 ]
 
 fn1_layer = [
@@ -54,5 +54,5 @@ fn1_layer = [
     ['Mute', 'phantom', "phantom", 'phantom'],
     ['VolDown', 'phantom', 'phantom', '|'],
     ['VolUp', 'F11', '_', 'Fn1'],
-    ['Power', 'F12', 'Del', 'Enter']
+    ['Power', 'F12', 'Del', 'Enter'],
 ]
